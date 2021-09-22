@@ -1,14 +1,14 @@
 FROM ubuntu:21.10
 
-LABEL maintainer="Philip Schmid (@PhilipSchmid)"
-
-LABEL name="pschmid/tshoot"
-LABEL version="v0.0.1"
+LABEL org.opencontainers.image.authors="Philip Schmid (@PhilipSchmid)"
+LABEL org.opencontainers.image.version="0.0.1"
+LABEL org.opencontainers.image.source="https://github.com/PhilipSchmid/tshoot-container"
+LABEL org.opencontainers.image.base.name="docker.io/library/ubuntu:21.10"
 
 ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Zurich
+ENV TZ=UTC
 
-RUN apt update && apt upgrade -y && apt install -y \
+RUN apt update && apt install -y \
     tzdata \
     tcpdump \
     htop \
