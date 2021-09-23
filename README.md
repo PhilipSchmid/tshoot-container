@@ -4,7 +4,7 @@
 
 ## Usage
 ```bash
-sudo podman run --rm -it --privileged --ipc=host --net=host --pid=host --network=host \
+sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
   -v /run:/run \
   -v /var/log:/var/log:ro \
   -v /etc/localtime:/etc/localtime:ro \
