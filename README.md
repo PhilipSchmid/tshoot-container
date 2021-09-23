@@ -16,3 +16,44 @@ sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
   ghcr.io/philipschmid/tshoot:latest
 ```
 (Params depend on the tools you would like to use...)
+
+## Examples
+### High Load15 & high NFS IOPS
+For example when the node has a high load15 but at the same time a low CPU usage. IOPS spike on the NFS storage backend. Find the process with the most NFS calls:
+```
+#!/usr/bin/bpftrace
+BEGIN
+{
+        printf("Tracing nfs syscalls... Hit Ctrl-C to end.\n");
+}
+
+kprobe:nfs_file_write,
+kprobe:nfs_file_read,
+kprobe:nfs_file_flush,
+kprobe:nfs_file_release,
+kprobe:nfs_file_fsync,
+kprobe:nfs_file_open,
+kprobe:nfs_direct_IO,
+kprobe:nfs_start_io_read,
+kprobe:nfs_end_io_read,
+kprobe:nfs_start_io_write,
+kprobe:nfs_end_io_write,
+kprobe:nfs_start_io_direct,
+kprobe:nfs_end_io_direct,
+kprobe:nfs_getattr
+{
+        @[pid, comm, func] = count();
+}
+
+interval:s:5
+{
+        time();
+        print(@);
+        clear(@);
+}
+
+END
+{
+        clear(@);
+}
+```
