@@ -5,6 +5,8 @@
 ## Usage
 ```bash
 sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
+  -e HOST=/host \
+  -v /:/host \
   -v /run:/run \
   -v /var/log:/var/log:ro \
   -v /etc/localtime:/etc/localtime:ro \
