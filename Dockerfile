@@ -30,5 +30,5 @@ RUN apt update && apt install -y \
     iotop \
     nfs-common \
     fio \
-  && apt clean all 
+  && apt clean all \
   && rm -rf /var/lib/apt/lists/*
