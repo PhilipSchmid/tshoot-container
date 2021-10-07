@@ -8,6 +8,7 @@ LABEL org.opencontainers.image.base.name="docker.io/library/ubuntu:21.10"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC
 
+RUN rm -f /etc/apt/apt.conf.d/docker-clean
 RUN apt update && apt install -y \
     tzdata \
     tcpdump \
@@ -29,4 +30,5 @@ RUN apt update && apt install -y \
     iotop \
     nfs-common \
     fio \
+  && apt clean all 
   && rm -rf /var/lib/apt/lists/*
