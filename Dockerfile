@@ -28,4 +28,5 @@ RUN apt update && apt install -y \
     bpftrace \
     iotop \
     nfs-common \
+    fio \
   && rm -rf /var/lib/apt/lists/*
