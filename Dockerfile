@@ -1,9 +1,9 @@
-FROM ubuntu:21.10
+FROM ubuntu:22.04
 
 LABEL org.opencontainers.image.authors="Philip Schmid (@PhilipSchmid)"
-LABEL org.opencontainers.image.version="0.0.3"
+LABEL org.opencontainers.image.version="0.0.5"
 LABEL org.opencontainers.image.source="https://github.com/PhilipSchmid/tshoot-container"
-LABEL org.opencontainers.image.base.name="docker.io/library/ubuntu:21.10"
+LABEL org.opencontainers.image.base.name="docker.io/library/ubuntu:22.04"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=UTC

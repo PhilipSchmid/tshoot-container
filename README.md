@@ -17,6 +17,10 @@ sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
 ```
 (Params depend on the tools you would like to use...)
 
+```bash
+kubectl run --rm -it --image ghcr.io/philipschmid/tshoot:latest tshoot -- /bin/bash
+```
+
 ## Examples
 ### High Load15 & high NFS IOPS
 For example when the node has a high load15 but at the same time a low CPU usage. IOPS spike on the NFS storage backend. Find the process with the most NFS calls:
