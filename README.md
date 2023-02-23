@@ -21,6 +21,26 @@ sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
 kubectl run --rm -it --image ghcr.io/philipschmid/tshoot:latest tshoot -- /bin/bash
 ```
 
+Example for `tcpdump` troubleshooting inside Kubernetes:
+```bash
+echo 'apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: tshoot
+  name: tshoot
+spec:
+  dnsPolicy: ClusterFirstWithHostNet
+  hostNetwork: true
+  containers:
+  - args:
+    - "sleep"
+    - "infinity"
+    image: ghcr.io/philipschmid/tshoot:latest
+    name: tshoot' | k apply -f-
+k exec -it tshoot -- /bin/bash
+```
+
 ## Examples
 ### High Load15 & high NFS IOPS
 For example when the node has a high load15 but at the same time a low CPU usage. IOPS spike on the NFS storage backend. Find the process with the most NFS calls:
