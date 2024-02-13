@@ -2,6 +2,8 @@
 
 [![Docker](https://github.com/PhilipSchmid/tshoot-container/actions/workflows/docker-publish.yml/badge.svg?branch=main)](https://github.com/PhilipSchmid/tshoot-container/actions/workflows/docker-publish.yml)
 
+**Archived in favor of https://github.com/nicolaka/netshoot.**
+
 ## Usage
 ```bash
 sudo podman run --rm -it --privileged --ipc=host --pid=host --network=host \
